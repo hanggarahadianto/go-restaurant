@@ -21,10 +21,17 @@ func SetupCloudinary() (*cloudinary.Cloudinary, error) {
 	return cld, nil
 }
 
-func EnvCloudUploadFolder() string {
+func EnvCloudUploadFolderRestaurant() string {
 	err := godotenv.Load(".env")
 	if err != nil {
 		log.Fatal("Error loading app.env file")
 	}
 	return os.Getenv("CLOUDINARY_MAIN_FOLDER")
+}
+func EnvCloudUploadFolderMenu() string {
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Fatal("Error loading app.env file")
+	}
+	return os.Getenv("CLOUDINARY_MENU_FOLDER")
 }

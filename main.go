@@ -29,6 +29,7 @@ func main() {
 	routes.SetupAuthRouter(r)
 	routes.SetupOrderRouter(r)
 	routes.SetupTagRouter(r)
+	routes.SetupMenuRouter(r)
 
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{

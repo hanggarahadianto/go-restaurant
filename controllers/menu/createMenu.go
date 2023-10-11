@@ -6,12 +6,13 @@ import (
 	"restaurant/db"
 	"restaurant/models"
 	uploadClaudinary "restaurant/utils/cloudinary-folder"
-	"time"
 
 	"github.com/gin-gonic/gin"
 )
 
-func CreateRestaurant(c *gin.Context) {
+func CreateMenu(c *gin.Context) {
+
+	id := c.Param("id")
 
 	filename, ok := c.Get("filePath")
 	if !ok {
@@ -26,26 +27,20 @@ func CreateRestaurant(c *gin.Context) {
 			"status": "failed",
 		})
 	}
-
-	// upload file
-	imageUrl, err := uploadClaudinary.UploadtoRestaurantFolder(file.(multipart.File), filename.(string))
+	imageUrl, err := uploadClaudinary.UploadtoMenuFolder(file.(multipart.File), filename.(string))
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
-	now := time.Now()
-	newRestaurant := models.Restaurant{
-		Name:      c.Request.PostFormValue("name"),
-		Content:   c.Request.PostFormValue("content"),
-		Phone:     c.Request.PostFormValue("phone"),
-		CreatedAt: now,
-		UpdatedAt: now,
+	newMenu := models.Menu{
+		Title:         c.Request.PostFormValue("title"),
+		Content:       c.Request.PostFormValue("content"),
+		Image:         imageUrl,
+		Restaurant_ID: id,
 	}
 
-	newRestaurant.Image = imageUrl
-
-	result := db.DB.Debug().Create(&newRestaurant)
+	result := db.DB.Debug().Create(&newMenu)
 	if result.Error != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"status":  "failed",
@@ -56,7 +51,7 @@ func CreateRestaurant(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{
 		"status": "success",
-		"data":   newRestaurant,
+		"data":   newMenu,
 	})
 
 }

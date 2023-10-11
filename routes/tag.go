@@ -12,6 +12,7 @@ func SetupTagRouter(r *gin.Engine) {
 		tag.GET("/get", tagController.GetTags)
 		tag.POST("/create/:id", tagController.CreateTag)
 		tag.GET("/getbyid/:id", tagController.GetTagsById)
+		tag.GET("/getbyRestaurantId/:id", tagController.GetTagsByRestaurantId)
 
 	}
 }

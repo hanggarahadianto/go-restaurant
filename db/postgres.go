@@ -34,6 +34,7 @@ func InitializeDb(dbConfig *utils.Config) {
 		&models.Restaurant{},
 		&models.Order{},
 		&models.Tags{},
+		&models.Menu{},
 	)
 
 	DB = db

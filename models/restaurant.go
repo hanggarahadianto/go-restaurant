@@ -7,13 +7,15 @@ import (
 )
 
 type Restaurant struct {
-	ID        uuid.UUID `gorm:"type:uuid;default:uuid_generate_v4();primary_key"`
-	Name      string    `json:"name" form:"name"`
-	Content   string    `json:"content" form:"content"`
-	Image     string    `json:"image" form:"image"`
-	Phone     string    `json:"phone" form:"phone"`
-	Order     []Order   `gorm:"Foreignkey:Restaurant_ID;association_foreignkey:ID;" json:"order"`
-	Tags      []Tags    `gorm:"Foreignkey:Restaurant_ID;association_foreignkey:ID;" json:"tags"`
+	ID      uuid.UUID `gorm:"type:uuid;default:uuid_generate_v4();primary_key"`
+	Name    string    `json:"name" form:"name"`
+	Content string    `json:"content" form:"content"`
+	Image   string    `json:"image" form:"image"`
+	Phone   string    `json:"phone" form:"phone"`
+	Order   []Order   `gorm:"Foreignkey:Restaurant_ID;association_foreignkey:ID;" json:"order"`
+	Tags    []Tags    `gorm:"Foreignkey:Restaurant_ID;association_foreignkey:ID;" json:"tags"`
+	Menu    []Menu    `gorm:"Foreignkey:Restaurant_ID;association_foreignkey:ID;" json:"menu"`
+
 	CreatedAt time.Time `gorm:"not null" json:"created_at,omitempty"`
 	UpdatedAt time.Time `gorm:"not null" json:"updated_at,omitempty"`
 }
