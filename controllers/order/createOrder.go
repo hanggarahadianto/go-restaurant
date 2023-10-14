@@ -17,7 +17,6 @@ func CreateOrder(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-
 	now := time.Now()
 	newOrder := models.Order{
 		Name:          orderData.Name,

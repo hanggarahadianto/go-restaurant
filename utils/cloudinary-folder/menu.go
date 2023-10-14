@@ -12,7 +12,7 @@ func UploadtoMenuFolder(file multipart.File, filePath string) (string, error) {
 	ctx := context.Background()
 	cld, err := config.SetupCloudinary()
 	if err != nil {
-		return "", err
+		return "no background context", err
 	}
 
 	// create upload params

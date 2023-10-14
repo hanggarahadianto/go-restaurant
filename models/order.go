@@ -13,6 +13,7 @@ type Order struct {
 	Date          string    `json:"date" form:"date"`
 	Time          string    `json:"time" form:"time"`
 	Restaurant_ID string    `gorm:"column:restaurant_id"  json:"restaurant_id"`
-	CreatedAt     time.Time `gorm:"not null" json:"created_at,omitempty"`
-	UpdatedAt     time.Time `gorm:"not null" json:"updated_at,omitempty"`
+
+	CreatedAt time.Time `gorm:"not null" json:"created_at,omitempty"`
+	UpdatedAt time.Time `gorm:"not null" json:"updated_at,omitempty"`
 }

@@ -12,6 +12,7 @@ func SetupMenuRouter(r *gin.Engine) {
 	{
 		menu.GET("/get", menuController.GetMenus)
 		menu.POST("/create/:id", middlewares.FileUploadMiddleware(), menuController.CreateMenu)
+		menu.GET("/getbyRestaurantId/:id", menuController.GetMenuByRestaurantId)
 
 	}
 }

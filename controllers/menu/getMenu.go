@@ -9,7 +9,7 @@ import (
 )
 
 func GetMenus(c *gin.Context) {
-	var menuList []models.Order
+	var menuList []models.Menu
 
 	result := db.DB.Debug().Find(&menuList)
 	if result.Error != nil {

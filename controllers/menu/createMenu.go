@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"restaurant/db"
 	"restaurant/models"
+
 	uploadClaudinary "restaurant/utils/cloudinary-folder"
 
 	"github.com/gin-gonic/gin"
@@ -36,9 +37,10 @@ func CreateMenu(c *gin.Context) {
 	newMenu := models.Menu{
 		Title:         c.Request.PostFormValue("title"),
 		Content:       c.Request.PostFormValue("content"),
-		Image:         imageUrl,
 		Restaurant_ID: id,
 	}
+
+	newMenu.Image = imageUrl
 
 	result := db.DB.Debug().Create(&newMenu)
 	if result.Error != nil {
