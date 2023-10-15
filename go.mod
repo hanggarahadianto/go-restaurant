@@ -1,6 +1,6 @@
 module restaurant
 
-go 1.21.0
+go 1.23.0
 
 require github.com/cloudinary/cloudinary-go/v2 v2.5.1
 

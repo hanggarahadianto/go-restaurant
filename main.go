@@ -39,9 +39,4 @@ func main() {
 
 	fmt.Println("server 5000")
 	log.Fatal(r.Run(":5000"))
-
-	// err := r.Run(":5000")
-	// if err != nil {
-	// 	panic(err)
-	// }
 }
